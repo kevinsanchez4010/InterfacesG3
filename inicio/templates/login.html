@@ -1,0 +1,36 @@
+{% load static %}
+
+{% include 'header.html' %}
+
+<section class="banner-area relative" style="background: #111; padding-top: 220px; padding-bottom: 120px; min-height: 85vh; display: flex; align-items: center;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
+                
+                <div class="card p-4 shadow-lg" style="border-radius: 10px; background: #ffffff; border: none; margin-top: 20px;">
+                    <h3 class="text-center mb-4 text-dark" style="font-weight: 600; letter-spacing: 1px;">LOGIN DE USUARIOS</h3>
+
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="username" class="form-label text-secondary" style="font-weight: 500;">Usuario</label>
+                            <input type="text" id="username" placeholder="Ingrese usuario" name="username" required class="form-control" style="height: 45px; border-radius: 5px;">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label text-secondary" style="font-weight: 500;">Contraseña</label>
+                            <input type="password" id="password" placeholder="Ingrese contraseña" name="password" required class="form-control" style="height: 45px; border-radius: 5px;">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success w-100 mt-3 py-2" style="font-weight: 600; font-size: 16px; border-radius: 5px; background-color: #28a745; border: none;">
+                            Iniciar sesión
+                        </button>
+                    </form>
+                </div>
+                </div>
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}
