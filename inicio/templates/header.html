@@ -1,76 +1,76 @@
-{%load static%}	
-    <!DOCTYPE html>
-	<html lang="zxx" class="no-js">
-	<head>
-		<!-- Mobile Specific Meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- Favicon-->
-		<link rel="shortcut icon" href="{% static 'public/img/fav.png' %}">
-		<!-- Author Meta -->
-		<meta name="author" content="colorlib">
-		<!-- Meta Description -->
-		<meta name="description" content="">
-		<!-- Meta Keyword -->
-		<meta name="keywords" content="">
-		<!-- meta character set -->
-		<meta charset="UTF-8">
-		<!-- Site Title -->
-		<title>Marco</title>
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static 'public/img/fav.png' %}">
+    <!-- Author Meta -->
+    <meta name="author" content="colorlib">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Marco</title>
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
-			<!--
-			CSS
-			============================================= -->
-			<link rel="stylesheet" href="{% static 'public/css/linearicons.css' %}">
-			<link rel="stylesheet" href="{% static 'public/css/font-awesome.min.css' %}">
-			<link rel="stylesheet" href="{% static 'public/css/bootstrap.css' %}">
-			<link rel="stylesheet" href="{% static 'public/css/magnific-popup.css' %}">
-			<link rel="stylesheet" href="{% static 'public/css/jquery-ui.css' %}">				
-			<link rel="stylesheet" href="{% static 'public/css/nice-select.css' %}">							
-			<link rel="stylesheet" href="{% static 'public/css/animate.min.css' %}">
-			<link rel="stylesheet" href="{% static 'public/css/owl.carousel.css' %}">				
-			<link rel="stylesheet" href="{% static 'public/css/main.css' %}">
-		</head>
-		<body>	
-			<header id="header">
-				<div class="header-top">
-					<div class="container">
-				  		<div class="row justify-content-center">
-						      <div id="logo">
-						        <a href="{% url 'inicio' %}"><img src="{% static 'public/img/logo.png' %}" alt="" title="" /></a>
-						      </div>
-				  		</div>			  					
-					</div>
-				</div>
-				<div class="container main-menu">
-					<div class="row align-items-center justify-content-center d-flex">			
-				      <nav id="nav-menu-container">
-				        <ul class="nav-menu">
-				          <li><a href="{% url 'inicio' %}">Home</a></li>
-				          <li><a href="{% url 'inicio' %}">About</a></li>
-				          <li><a href="{% url 'inicio' %}">Menu</a></li>
-				          <li><a href="{% url 'inicio' %}">Gallery</a></li>
-				          <li class="menu-has-children"><a href="">Blog</a>
-				            <ul>
-				              <li><a href="{% url 'inicio' %}">Blog Home</a></li>
-				              <li><a href="{% url 'inicio' %}">Blog Single</a></li>
-				            </ul>
-				          </li>	
-				          <li class="menu-has-children"><a href="">Pages</a>
-				            <ul>
-				            	  <li><a href="{% url 'inicio' %}">Elements</a></li>
-						          <li class="menu-has-children"><a href="">Level 2 </a>
-						            <ul>
-						              <li><a href="#">Item One</a></li>
-						              <li><a href="#">Item Two</a></li>
-						            </ul>
-						          </li>					                		
-				            </ul>
-				          </li>					          					          		          
-				          <li><a href="{% url 'inicio' %}">Contact</a></li>
-						  <li><a href="{% url 'login' %}">Iniciar Sesion</a></li>
-				        </ul>
-				      </nav><!-- #nav-menu-container -->					      		  
-					</div>
-				</div>
-			</header><!-- #header -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" href="{% static 'public/css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/main.css' %}">
+</head>
+<body>
+    <header id="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div id="logo">
+                        <a href="{% url 'inicio' %}"><img src="{% static 'public/img/logo.png' %}" alt="" title="" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container main-menu">
+            <div class="row align-items-center justify-content-center d-flex">
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li><a href="{% url 'inicio' %}">Home</a></li>
+                        <li><a href="{% url 'inicio' %}">About</a></li>
+                        <li><a href="{% url 'inicio' %}">Menu</a></li>
+                        <li><a href="{% url 'inicio' %}">Gallery</a></li>
+                        <li class="menu-has-children"><a href="">Blog</a>
+                            <ul>
+                                <li><a href="{% url 'inicio' %}">Blog Home</a></li>
+                                <li><a href="{% url 'inicio' %}">Blog Single</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-has-children"><a href="">Pages</a>
+                            <ul>
+                                <li><a href="{% url 'inicio' %}">Elements</a></li>
+                                <li class="menu-has-children"><a href="">Level 2</a>
+                                    <ul>
+                                        <li><a href="#">Item One</a></li>
+                                        <li><a href="#">Item Two</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'inicio' %}">Contact</a></li>
+                        <li><a href="{% url 'login' %}">Iniciar Sesion</a></li>
+                    </ul>
+                </nav><!-- #nav-menu-container -->
+            </div>
+        </div>
+    </header><!-- #header -->
