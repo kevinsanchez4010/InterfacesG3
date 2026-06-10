@@ -23,6 +23,3 @@ def login_view(request):
             mensaje = 'Datos incorrectos'
             
     return render(request, 'login.html', {'mensaje': mensaje})
-
-def dashboard(request):
-    return render(request, 'dashboard.html')
