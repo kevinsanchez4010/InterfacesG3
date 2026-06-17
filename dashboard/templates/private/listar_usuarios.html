@@ -13,41 +13,6 @@
                             </div>
                             <a href="{% url 'crear_usuario' %}" class="btn btn-primary" style="border-radius: 100px;"> Crear usuario    </a>
 
-<<<<<<< HEAD
-<table class="table table-striped table-bordered">
-    <thead>
-        <tr>
-            <th>Codigo</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-        </tr>
-        
-    </thead>
-    <div class="container" style="text-align: center;">
-    <a href="{% url 'crear_usuario' %}" class="btn btn-primary" style="border-radius: 100px;">Crear Usuario</a>
-    </div>
-
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-success">
-        {{ message }}
-    </div>
-    {% endfor %}
-    {% endif %}
-    <tbody>
-        {% for usuario in usuarios %}
-        <tr>
-            <td>{{ usuario.id }}</td>
-            <td>{{ usuario.username }}</td>
-            <td>{{ usuario.email|default:"Sin correo" }}</td>
-            <td> 
-                <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</a>
-
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-=======
                             {% if messages %}
                             {% for message in messages %}
                             <div class="alert alert-success">
@@ -94,7 +59,8 @@
                                         <td>{{ usuario.username }}</td>
                                         <td>{{ usuario.email|default:'Sin correo' }}</td>
                                         <td>
-                                            <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-danger" onclick="return(confirm('Seguro que desea eliminar'))">Eliminar</a>
+                                            <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-danger" onclick="return(confirm('Seguro que desea eliminar'))" style="border-radius: 100px;">Eliminar</a>
+                                            <a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-warning" style="border-radius: 100px;">Editar</a>
                                         </td>
                                     </tr>
                                     {% empty %}
@@ -134,6 +100,5 @@
             });
         })();
     </script>
->>>>>>> e768552c3a0501d7a2f9ee359ac5bb59edd47759
 
 {% include 'private/footer.html' %}
