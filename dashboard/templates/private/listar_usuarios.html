@@ -59,8 +59,13 @@
                                         <td>{{ usuario.username }}</td>
                                         <td>{{ usuario.email|default:'Sin correo' }}</td>
                                         <td>
+<<<<<<< HEAD
                                             <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-danger" onclick="return(confirm('Seguro que desea eliminar'))" style="border-radius: 100px;">Eliminar</a>
                                             <a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-warning" style="border-radius: 100px;">Editar</a>
+=======
+                                            <a href="" class="btn btn-warning" style="border-radius: 100px;">Editar</a>
+                                            <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-danger" style="border-radius: 100px;" onclick="return(confirm('Seguro que desea eliminar'))">Eliminar</a>
+>>>>>>> c8ff99d7aea796ce6f7ef2f0d476fd68f7cfdecd
                                         </td>
                                     </tr>
                                     {% empty %}
