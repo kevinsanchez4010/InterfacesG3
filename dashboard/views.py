@@ -50,4 +50,35 @@ def eliminar_usuario(request, id):
     messages.success(request, "Usuario eliminado")
     return redirect("listar_usuarios")
 
+def editar_usuario(request, id): #metodo editar
+    usuario = User.objects.get(id = id)
+    if request.method == "POST":
+        username = request.POST.get("username_edit")
+        email = request.POST.get("email_edit")
+        password = request.POST.get("password_edit")
+
+        #Verificar si existe el username
+        if User.objects.filter(username = username).exclude(id = id).exists():
+            messages.error(request, "El usuario ya esta registrado")
+            return render(request, "private/editar_usuario.html", {"usuario":usuario})
+        
+        #Verificar si existe el email
+        if User.objects.filter(email = email).exclude(id = id).exists():
+            messages.error(request, "El correo ya existe")
+            return render(request, "private/editar_usuario.html", {"usuario":usuario})
+        #Actualizar datos
+
+        usuario.username = username
+        usuario.email = email
+        if password:
+            usuario.set_password(password)
+            
+
+        usuario.save()
+        messages.success(request, "El registro se actualizo con exito")
+        return redirect("listar_usuarios")
+    contexto = {
+        "usuario":usuario
+    }
+    return render(request, "private/editar_usuario.html", contexto)
     
