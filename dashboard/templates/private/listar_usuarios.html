@@ -9,14 +9,29 @@
             <th>Nombre</th>
             <th>Correo</th>
         </tr>
+        
     </thead>
+    <div class="container" style="text-align: center;">
+    <a href="{% url 'crear_usuario' %}" class="btn btn-primary" style="border-radius: 100px;">Crear Usuario</a>
+    </div>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
     <tbody>
         {% for usuario in usuarios %}
         <tr>
             <td>{{ usuario.id }}</td>
             <td>{{ usuario.username }}</td>
-            <td>{{ usuario.email }}</td>
-            <td> </td>
+            <td>{{ usuario.email|default:"Sin correo" }}</td>
+            <td> 
+                <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</a>
+
+            </td>
         </tr>
         {% endfor %}
     </tbody>
