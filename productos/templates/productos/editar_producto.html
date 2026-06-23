@@ -1,0 +1,66 @@
+{% load static %}
+{% include 'private/header.html' %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="card shadow-sm border-0" style="border-radius: 12px;">
+                    <div class="card-body p-4">
+                        
+                        <div class="mb-4">
+                            <h4 class="font-weight-bold mb-1" style="color: #2c3e50; font-size: 1.4rem;">Modificar Información del Producto</h4>
+                            <p class="text-muted small mb-0">Actualice los valores del producto seleccionado. Recuerde verificar el stock actual.</p>
+                        </div>
+
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert" style="border-radius: 8px;">
+                                <i class="mdi mdi-alert-circle-outline mr-2"></i> {{ message }}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            
+                            <div class="form-group mb-3">
+                                <label class="font-weight-medium text-dark">Nombre del Producto</label>
+                                <input type="text" name="nombre_edit" value="{{ producto.nombre }}" class="form-control" required style="border-radius: 8px; padding: 12px;">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label class="font-weight-medium text-dark">Precio Ajustado ($)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-light border-right-0" style="border-radius: 8px 0 0 8px;">$</span>
+                                        </div>
+                                        <input type="number" step="0.01" min="0" name="precio_edit" value="{{ producto.precio }}" class="form-control border-left-0" required style="border-radius: 0 8px 8px 0; padding: 12px;">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 form-group mb-4">
+                                    <label class="font-weight-medium text-dark">Stock Disponible</label>
+                                    <input type="number" min="0" name="stock_edit" value="{{ producto.stock }}" class="form-control" required style="border-radius: 8px; padding: 12px;">
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex align-items-center pt-2">
+                                <button type="submit" class="btn btn-warning text-white px-4 mr-3" style="border-radius: 8px; font-weight: 500; padding: 10px 20px;">
+                                    <i class="mdi mdi-check-circle-outline mr-1"></i> Guardar Cambios
+                                </button>
+                                <a href="{% url 'listar_productos' %}" class="btn btn-outline-secondary px-4" style="border-radius: 8px; font-weight: 500; padding: 10px 20px;">
+                                    Cancelar
+                                </a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'private/footer.html' %}
