@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from django.shortcuts import redirect, render
 from productos.models import Producto
 # Create your views here.
 
+@login_required
 def listar_productos(request):
     productos = Producto.objects.all()
     contexto = {
@@ -11,6 +13,7 @@ def listar_productos(request):
     }
     return render(request, 'productos/listar_productos.html', contexto)
 
+@login_required
 def crear_producto(request):
     if request.method == 'POST':
         nombre = request.POST.get("nombre")
@@ -34,12 +37,14 @@ def crear_producto(request):
         
     return render(request, "productos/crear_producto.html")
 
+@login_required
 def eliminar_producto(request, id):
     producto = Producto.objects.get(id=id)
     producto.delete()
     messages.success(request, "Producto eliminado")
     return redirect("listar_productos")
 
+@login_required
 def editar_producto(request, id): # Método editar
     producto = Producto.objects.get(id=id)
     if request.method == "POST":

@@ -125,3 +125,6 @@ STATICFILES_DIRS =[
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']
+
+LOGOUT_REDIRECT_URL = 'login'  
+LOGIN_URL = 'login' 

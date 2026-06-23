@@ -2,12 +2,14 @@ from django.contrib import messages
 
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required
 def dashboard(request):
     return render(request, 'private/dashboard.html')
 
-
+@login_required
 def listar_usuarios(request):
     usuarios = User.objects.all()
     contexto = {
@@ -16,6 +18,7 @@ def listar_usuarios(request):
     }
     return render(request, 'private/listar_usuarios.html', contexto)
 
+@login_required
 def crear_usuario(request):
     if request.method == 'POST':
         username = request.POST.get("username")
@@ -44,12 +47,14 @@ def crear_usuario(request):
         return redirect("listar_usuarios")
     return render(request, "private/crear_usuarios.html")
 
+@login_required
 def eliminar_usuario(request, id):
     usuario = User.objects.get(id = id)
     usuario.delete()
     messages.success(request, "Usuario eliminado")
     return redirect("listar_usuarios")
 
+@login_required
 def editar_usuario(request, id): #metodo editar
     usuario = User.objects.get(id = id)
     if request.method == "POST":
