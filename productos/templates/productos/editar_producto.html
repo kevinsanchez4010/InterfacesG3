@@ -40,9 +40,19 @@
                                     </div>
                                 </div>
                                 
-                                <div class="col-md-6 form-group mb-4">
+                                <div class="col-md-6 form-group mb-3">
                                     <label class="font-weight-medium text-dark">Stock Disponible</label>
                                     <input type="number" min="0" name="stock_edit" value="{{ producto.stock }}" class="form-control" required style="border-radius: 8px; padding: 12px;">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-4">
+                                    <label class="font-weight-medium text-dark">Estado del Producto</label>
+                                    <select name="estado_edit" class="form-control" required style="border-radius: 8px; padding: 12px; height: auto;">
+                                        <option value="activo" {% if producto.estado == 'activo' %}selected{% endif %}>Activo</option>
+                                        <option value="inactivo" {% if producto.estado == 'inactivo' %}selected{% endif %}>Inactivo</option>
+                                    </select>
                                 </div>
                             </div>
                             

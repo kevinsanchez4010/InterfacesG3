@@ -19,6 +19,7 @@ def crear_producto(request):
         nombre = request.POST.get("nombre")
         precio = request.POST.get("precio")
         stock = request.POST.get("stock")
+        estado = request.POST.get("estado")
 
         # Si ya existe un producto con el mismo nombre
         if Producto.objects.filter(nombre=nombre).exists():
@@ -29,7 +30,8 @@ def crear_producto(request):
         Producto.objects.create(
             nombre=nombre,
             precio=precio,
-            stock=stock
+            stock=stock,
+            estado=estado
         )
 
         messages.success(request, "Producto creado con éxito")
@@ -51,6 +53,7 @@ def editar_producto(request, id): # Método editar
         nombre = request.POST.get("nombre_edit")
         precio = request.POST.get("precio_edit")
         stock = request.POST.get("stock_edit")
+        estado = request.POST.get("estado_edit")
 
         # Verificar si existe el nombre excluyendo el producto actual
         if Producto.objects.filter(nombre=nombre).exclude(id=id).exists():
@@ -61,6 +64,7 @@ def editar_producto(request, id): # Método editar
         producto.nombre = nombre
         producto.precio = precio
         producto.stock = stock
+        producto.estado = estado
         
         producto.save()
         messages.success(request, "El producto se actualizó con éxito")
