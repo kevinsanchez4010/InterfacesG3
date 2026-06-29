@@ -60,31 +60,13 @@
                                 </thead>
                                 <tbody>
                                     {% for usuario in usuarios %}
-                                    <tr style="transition: background 0.2s ease;">
-                                        <td class="align-middle" style="padding: 14px;">
-                                            <span class="badge badge-secondary text-dark font-weight-bold" style="background-color: #f1f5f9; border-radius: 6px; padding: 6px 10px;">
-                                                #{{ usuario.id }}
-                                            </span>
-                                        </td>
-                                        <td class="align-middle font-weight-medium text-dark" style="padding: 14px;">
-                                            {{ usuario.username }}
-                                        </td>
-                                        <td class="align-middle" style="padding: 14px;">
-                                            {% if usuario.email %}
-                                                <span class="text-secondary">{{ usuario.email }}</span>
-                                            {% else %}
-                                                <span class="text-muted font-italic small">Sin correo registrado</span>
-                                            {% endif %}
-                                        </td>
-                                        <td class="align-middle text-right" style="padding: 14px;">
-                                            <div class="d-flex justify-content-end gap-2">
-                                                <a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-sm btn-warning text-white font-weight-medium mr-1" style="border-radius: 6px; padding: 6px 14px;">
-                                                    <i class="mdi mdi-pencil-outline mr-1"></i> Editar
-                                                </a>
-                                                <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-sm btn-outline-danger font-weight-medium" onclick="return(confirm('¿Está seguro de que desea eliminar este usuario?'))" style="border-radius: 6px; padding: 6px 14px;">
-                                                    <i class="mdi mdi-trash-can-outline mr-1"></i> Eliminar
-                                                </a>
-                                            </div>
+                                    <tr>
+                                        <td>#{{ usuario.id }}</td>
+                                        <td>{{ usuario.username }}</td>
+                                        <td>{{ usuario.email|default:'Sin correo' }}</td>
+                                        <td>
+                                            <a href="" class="btn btn-warning" style="border-radius: 100px;">Editar</a>
+                                            <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-danger" style="border-radius: 100px;" onclick="return(confirm('Seguro que desea eliminar'))">Eliminar</a>
                                         </td>
                                     </tr>
                                     {% empty %}
