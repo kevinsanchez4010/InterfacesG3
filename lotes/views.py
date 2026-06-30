@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from django.shortcuts import render, redirect
-from proveedores.models import Lotes
+from lotes.models import Lote as Lotes
 # Create your views here.
 
 #Mostrar
