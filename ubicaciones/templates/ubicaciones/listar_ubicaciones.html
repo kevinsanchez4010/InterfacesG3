@@ -10,7 +10,7 @@
                         
                         <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
                             <div>
-                                <h4 class="font-weight-bold mb-1" style="color: #2c3e50; font-size: 1.4rem;">Listado de Ubicaciones</h4>
+                                <h4 class="font-weight-bold mb-1" style="color: #2c3e50; font-size: 1.4rem;">Listado de Áreas</h4>
                                 <p class="text-muted small mb-0">Gestión de áreas y zonas de almacenamiento en el sistema</p>
                             </div>
                             <div class="d-flex align-items-center gap-3">
@@ -86,7 +86,7 @@
                                     {% empty %}
                                     <tr>
                                         <td colspan="5" class="py-4 text-center" style="border-bottom: 1px solid #edf2f7; color: #a0aec0;">
-                                            No hay ubicaciones registradas en el sistema.
+                                            No hay áreas registradas en el sistema.
                                         </td>
                                     </tr>
                                     {% endfor %}
@@ -100,13 +100,13 @@
     </div>
 
     <script>
-        // Función para filtrar la tabla de ubicaciones en tiempo real
+        
         document.getElementById('filtroUbicaciones').addEventListener('input', function() {
             const filtro = this.value.toLowerCase();
             const filas = document.querySelectorAll('#tablaUbicaciones tbody tr');
 
             filas.forEach(fila => {
-                // Verificar que no sea la fila de la tabla vacía
+
                 if(fila.cells.length > 1) {
                     const area = fila.cells[0].textContent.toLowerCase();
                     const capacidad = fila.cells[1].textContent.toLowerCase();
