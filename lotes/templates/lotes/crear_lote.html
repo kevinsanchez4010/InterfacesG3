@@ -1,5 +1,12 @@
 {% load static %}
 {% include 'private/header.html' %}
 
+<form action="" method="post">
+    {% csrf_token %}
+    <!-- Form fields go here -->
+    <div class="form-group">
+        <label for="nombre">Nombre del Lote</label>
+        <input type="text" name="nombre" class="form-control" required placeholder="Nombre del lote">
+    </div>
 
 {% include 'private/footer.html' %}
