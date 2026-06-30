@@ -84,6 +84,31 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para filtrar la tabla de lotes
+        document.getElementById('filtroLotes').addEventListener('input', function() {
+            const filtro = this.value.toLowerCase();
+            const filas = document.querySelectorAll('#tablaLotes tbody tr');
+
+            filas.forEach(fila => {
+                const codigo = fila.cells[0].textContent.toLowerCase();
+                const nombre = fila.cells[1].textContent.toLowerCase();
+                const descripcion = fila.cells[2].textContent.toLowerCase();
+
+                if (codigo.includes(filtro) || nombre.includes(filtro) || descripcion.includes(filtro)) {
+                    fila.style.display = '';
+                } else {
+                    fila.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 
 {% include 'private/footer.html' %}
