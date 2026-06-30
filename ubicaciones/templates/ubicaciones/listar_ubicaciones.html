@@ -106,7 +106,7 @@
             const filas = document.querySelectorAll('#tablaUbicaciones tbody tr');
 
             filas.forEach(fila => {
-                // Verificar que no sea la fila de la tabla vacía
+                
                 if(fila.cells.length > 1) {
                     const area = fila.cells[0].textContent.toLowerCase();
                     const capacidad = fila.cells[1].textContent.toLowerCase();
