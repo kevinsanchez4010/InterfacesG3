@@ -30,4 +30,21 @@
                             </div>
                             {% endfor %}
                         {% endif %}
+
+                        <div class="form-group mb-4">
+                            <div class="input-group shadow-sm" style="border-radius: 8px; overflow: hidden;">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-white border-right-0" style="border: 1px solid #e2e8f0;">
+                                        <i class="mdi mdi-magnify text-muted" style="font-size: 1.2rem;"></i>
+                                    </span>
+                                </div>
+                                <input
+                                    id="filtroLotes"
+                                    type="text"
+                                    class="form-control border-left-0 py-4"
+                                    style="border: 1px solid #e2e8f0; font-size: 0.95rem;"
+                                    placeholder="Buscar por código, nombre o descripción..."
+                                >
+                            </div>
+                        </div>
 {% include 'private/footer.html' %}
