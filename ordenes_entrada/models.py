@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class OrdenEntrada(models.Model):
     
     proveedor = models.ForeignKey(
-        'Proveedor', 
+        'proveedores.Proveedor', 
         on_delete=models.CASCADE, 
         verbose_name="Proveedor"
     )
