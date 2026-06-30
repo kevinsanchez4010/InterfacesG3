@@ -100,13 +100,13 @@
     </div>
 
     <script>
-        // Función para filtrar la tabla de ubicaciones en tiempo real
+        
         document.getElementById('filtroUbicaciones').addEventListener('input', function() {
             const filtro = this.value.toLowerCase();
             const filas = document.querySelectorAll('#tablaUbicaciones tbody tr');
 
             filas.forEach(fila => {
-                
+
                 if(fila.cells.length > 1) {
                     const area = fila.cells[0].textContent.toLowerCase();
                     const capacidad = fila.cells[1].textContent.toLowerCase();
