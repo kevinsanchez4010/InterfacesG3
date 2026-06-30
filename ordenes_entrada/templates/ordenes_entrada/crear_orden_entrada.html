@@ -1,33 +1,51 @@
-## Zy
 {% load static %}
 {% include "private/header2.html" %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <div class="container mt-4">
-   <h3 class="text-primary mb-3"><i class="bi bi-pencil-square me-2"></i> Formulario de Registro</h3>
+   <h3 class="text-primary mb-3"><i class="bi bi-card-list me-2"></i> Registrar Orden de Entrada - AKI Inventario</h3>
+    <p class="text-muted mb-4">Registre una nueva recepción de mercancía para los productos de comidas, ropas y utensilios.</p>
     <hr>
-    <br>
     <form method="POST" action="">
         {% csrf_token %}
         <div class="mb-3">
-           <label for=""><i class="bi bi-book text-primary me-1"></i> Nombre del producto:</label>
-            <input type="text" name="nombreMateria" class="form-control shadow-sm" id="nombreMateria" required>
+           <label class="form-label"><i class="bi bi-building text-primary me-1"></i> Proveedor</label>
+            <input type="text" name="proveedor" class="form-control shadow-sm" id="proveedor" placeholder="Ej. Proveedor AKI S.A." required>
         </div>
         <div class="mb-3">
-          <label for=""><i class="bi bi-currency-dollar text-success me-1"></i> Precio de la Materia:</label>
-            <input type="number" name="precioMateria" class="form-control shadow-sm" id="precioMateria" required>
+          <label class="form-label"><i class="bi bi-box-seam text-success me-1"></i> Producto</label>
+            <input type="text" name="producto" class="form-control shadow-sm" id="producto" placeholder="Ej. Arroz, Camiseta, Sartén" required>
         </div>
         <div class="mb-3">
-           <label for=""><i class="bi bi-star-fill text-warning me-1"></i> Créditos de la Materia:</label>
-            <input type="number" class="form-control shadow-sm" id="creditosMateria" name="creditosMateria" required>
+           <label class="form-label"><i class="bi bi-tags text-warning me-1"></i> Categoría</label>
+            <select name="categoria" id="categoria" class="form-control shadow-sm" required>
+                <option value="" disabled selected>Seleccione categoría</option>
+                <option value="comidas">Comidas</option>
+                <option value="ropas">Ropas</option>
+                <option value="utensilios">Utensilios</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label"><i class="bi bi-currency-dollar text-success me-1"></i> Precio unitario</label>
+                <input type="number" step="0.01" min="0" name="precio_unitario" class="form-control shadow-sm" id="precio_unitario" placeholder="0.00" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label"><i class="bi bi-stack text-info me-1"></i> Cantidad recibida</label>
+                <input type="number" min="1" name="cantidad" class="form-control shadow-sm" id="cantidad" placeholder="Ej. 20" required>
+            </div>
         </div>
         <div class="mb-3">
-            <label for=""><i class="bi bi-people-fill text-info me-1"></i> Número de Estudiantes:</label>
-            <input type="number" class="form-control shadow-sm" id="num_estudiantesMateria" name="num_estudiantesMateria" required>
+            <label class="form-label"><i class="bi bi-calendar-event text-secondary me-1"></i> Fecha de ingreso</label>
+            <input type="date" name="fecha_ingreso" class="form-control shadow-sm" id="fecha_ingreso" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><i class="bi bi-card-text text-muted me-1"></i> Observaciones</label>
+            <textarea name="observaciones" class="form-control shadow-sm" id="observaciones" rows="3" placeholder="Comentarios sobre la orden"></textarea>
         </div>
        <button type="submit" class="btn btn-success">
-            <i class="bi bi-check-circle me-1"></i> Crear Materia
+            <i class="bi bi-check-circle me-1"></i> Guardar Entrada
         </button>
-        <a href="{% url 'listar_materias' %}" class="btn btn-outline-danger">
+        <a href="#" class="btn btn-outline-danger">
             <i class="bi bi-arrow-left-circle me-1"></i> Cancelar
         </a>
     </form>
