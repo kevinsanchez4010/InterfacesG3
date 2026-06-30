@@ -70,8 +70,20 @@
                                             </a>
                                             <a href="{% url 'eliminar_lote' lote.id %}" class="btn btn-sm btn-outline-danger" style="border-radius: 8px; font-weight: 500;">
                                                 <i class="mdi mdi-delete-outline"></i> Eliminar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="4" class="py-3 text-center" style="border-bottom: 1px solid #edf2f7;">
+                                            No hay lotes disponibles.
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
+
 
 {% include 'private/footer.html' %}
