@@ -23,5 +23,11 @@
                             </div>
                         </div>
 
-
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show mb-4" role="alert" style="border-radius: 8px;">
+                                <i class="mdi mdi-check-circle-outline mr-2"></i> {{ message }}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
 {% include 'private/footer.html' %}
