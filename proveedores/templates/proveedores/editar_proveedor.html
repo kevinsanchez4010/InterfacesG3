@@ -1,0 +1,145 @@
+{% load static %}
+{% include 'private/header.html' %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row justify-content-center">
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="card shadow-sm border-0" style="border-radius: 12px;">
+                    <div class="card-body p-4">
+
+                        <div class="mb-4">
+                            <h4 class="font-weight-bold mb-1" style="color: #2c3e50; font-size: 1.4rem;">
+                                Registrar nuevo  Proveedor
+                            </h4>
+                            <p class="text-muted small mb-0">
+                                Ingrese la información correspondientede un nuevo proveedor del minimarket.
+                            </p>
+                        </div>
+
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert" style="border-radius: 8px;">
+                                <i class="mdi mdi-alert-circle-outline mr-2"></i> {{ message }}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <form action="" method="post">
+                            {% csrf_token %}
+
+                            <div class="form-group mb-3">
+                                <label class="font-weight-medium text-dark">
+                                    Nombre del Proveedor
+                                </label>
+                                <input
+                                    type="text"
+                                    name="nombre"
+                                    class="form-control"
+                                    required
+                                    placeholder="Ej. Distribuidora El Ahorro"
+                                    style="border-radius: 8px; padding: 12px;">
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6 form-group mb-3">
+                                    <label class="font-weight-medium text-dark">
+                                        Teléfono
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="telefono"
+                                        class="form-control"
+                                        required
+                                        placeholder="Ej. 0991234567"
+                                        style="border-radius: 8px; padding: 12px;">
+                                </div>
+
+                                <div class="col-md-6 form-group mb-3">
+                                    <label class="font-weight-medium text-dark">
+                                        Correo Electrónico
+                                    </label>
+                                    <input
+                                        type="email"
+                                        name="correo"
+                                        class="form-control"
+                                        required
+                                        placeholder="Ej. proveedor@email.com"
+                                        style="border-radius: 8px; padding: 12px;">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="font-weight-medium text-dark">
+                                    Dirección
+                                </label>
+                                <input
+                                    type="text"
+                                    name="direccion"
+                                    class="form-control"
+                                    required
+                                    placeholder="Ej. Av. Amazonas y Bolívar"
+                                    style="border-radius: 8px; padding: 12px;">
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6 form-group mb-4">
+                                    <label class="font-weight-medium text-dark">
+                                        Estado del Proveedor
+                                    </label>
+
+                                    <select
+                                        name="estado"
+                                        class="form-control"
+                                        required
+                                        style="border-radius: 8px; padding: 12px; height: auto;">
+
+                                        <option value="activo" selected>
+                                            Activo
+                                        </option>
+
+                                        <option value="inactivo">
+                                            Inactivo
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                            <div class="d-flex align-items-center pt-2">
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-success px-4 mr-3"
+                                    style="border-radius: 8px; font-weight: 500; padding: 10px 20px;">
+
+                                    <i class="mdi mdi-content-save mr-1"></i>
+                                    Registrar Proveedor
+
+                                </button>
+
+                                <a href="{% url 'listar_proveedores' %}"
+                                   class="btn btn-outline-secondary px-4"
+                                   style="border-radius: 8px; font-weight: 500; padding: 10px 20px;">
+
+                                    Cancelar
+
+                                </a>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'private/footer.html' %}
