@@ -7,7 +7,7 @@ class Producto(models.Model):
     ]
 
     ubicacion = models.ForeignKey(
-        'Ubicacion', 
+        'ubicaciones.Ubicacion', 
         on_delete=models.PROTECT, 
         verbose_name="Ubicación en Bodega"
     )
