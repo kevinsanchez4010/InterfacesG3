@@ -1,0 +1,47 @@
+{% load static %}
+{% include 'private/header.html' %}
+
+<div class="container mt-4">
+    <h2>Editar Ubicación</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="" method="post" class="mt-3">
+        {% csrf_token %}
+        
+        <div class="form-group mb-3">
+            <label for="nombre_area">Nombre del Área / Zona</label>
+            <input type="text" name="nombre_area" id="nombre_area" value="{{ ubicacion.nombre_area }}" class="form-control" required placeholder="Ej: Bodega Central">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="capacidad_maxima">Capacidad Máxima (Unidades)</label>
+            <input type="number" name="capacidad_maxima" id="capacidad_maxima" value="{{ ubicacion.capacidad_maxima }}" class="form-control" required placeholder="Ej: 500">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="seccion_fila">Sección y Fila (Coordenadas)</label>
+            <input type="text" name="seccion_fila" id="seccion_fila" value="{{ ubicacion.seccion_fila }}" class="form-control" required placeholder="Ej: Estantería 12 - Fila B">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="estado_espacio">Estado del Espacio</label>
+            <select name="estado_espacio" id="estado_espacio" class="form-control" required>
+                <option value="disponible" {% if ubicacion.estado_espacio == 'disponible' %}selected{% endif %}>Disponible</option>
+                <option value="lleno" {% if ubicacion.estado_espacio == 'lleno' %}selected{% endif %}>Lleno</option>
+                <option value="mantenimiento" {% if ubicacion.estado_espacio == 'mantenimiento' %}selected{% endif %}>En Mantenimiento</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Actualizar Ubicación</button>
+        <a href="{% url 'listar_ubicaciones' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+{% include 'private/footer.html' %}
