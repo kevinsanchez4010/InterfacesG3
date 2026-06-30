@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'inicio',
     'dashboard',
     'productos',
+    'proveedores',
+    'ubicaciones',
+    'lotes',
+    'ordenes_entrada',
+    'ordenes_salida',
 ]
 
 MIDDLEWARE = [
