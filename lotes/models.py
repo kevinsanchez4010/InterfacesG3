@@ -3,7 +3,7 @@ from django.db import models
 class Lote(models.Model):
     
     producto = models.ForeignKey(
-        'Producto', 
+        'productos.Producto', 
         on_delete=models.CASCADE, 
         verbose_name="Producto Asociado"
     )

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class OrdenSalida(models.Model):
     
     producto = models.ForeignKey(
-        'Producto', 
+        'productos.Producto', 
         on_delete=models.CASCADE, 
         verbose_name="Producto Despachado"
     )
