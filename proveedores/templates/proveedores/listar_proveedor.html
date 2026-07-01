@@ -1,0 +1,273 @@
+{% load static %}
+{% include 'private/header.html' %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card shadow-sm border-0" style="border-radius: 12px; overflow: hidden;">
+                    <div class="card-body p-4">
+
+                        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+                            <div>
+                                <h4 class="font-weight-bold mb-1" style="color: #2c3e50; font-size: 1.4rem;">
+                                    Gestión de Proveedores
+                                </h4>
+                                <p class="text-muted small mb-0">
+                                    Administración y consulta de proveedores registrados
+                                </p>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="badge badge-light-primary px-3 py-2 font-weight-medium mr-2"
+                                    style="font-size:0.85rem;border-radius:8px;background-color:#eef2f7;color:#3f51b5;">
+                                    Proveedores:
+                                    <strong class="text-dark">{{ proveedores|length }}</strong>
+                                </span>
+
+                                <a href="{% url 'crear_proveedor' %}"
+                                    class="btn btn-success px-4"
+                                    style="border-radius:8px;font-weight:500;box-shadow:0 4px 10px rgba(40,167,69,.25);">
+
+                                    <i class="mdi mdi-plus-circle-outline mr-1"></i>
+                                    Añadir Proveedor
+
+                                </a>
+                            </div>
+                        </div>
+
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show mb-4"
+                                role="alert"
+                                style="border-radius:8px;">
+
+                                <i class="mdi mdi-check-circle-outline mr-2"></i>
+                                {{ message }}
+
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="form-group mb-4">
+                            <div class="input-group shadow-sm"
+                                style="border-radius:8px;overflow:hidden;">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-white border-right-0"
+                                        style="border:1px solid #e2e8f0;">
+
+                                        <i class="mdi mdi-magnify text-muted"
+                                            style="font-size:1.2rem;"></i>
+
+                                    </span>
+                                </div>
+
+                                <input
+                                    id="filtroProveedores"
+                                    type="text"
+                                    class="form-control border-left-0 py-4"
+                                    style="border:1px solid #e2e8f0;font-size:.95rem;"
+                                    placeholder="Buscar por nombre, teléfono, correo o estado...">
+
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-hover align-middle mb-0"
+                                id="tablaProveedores"
+                                style="border-collapse:separate;border-spacing:0;">
+
+                                <thead style="background-color:#f8fafc;">
+
+                                    <tr>
+
+                                        <th class="font-weight-bold text-muted text-uppercase small"
+                                            style="width:8%;padding:14px;border-bottom:2px solid #edf2f7;">
+                                            ID
+                                        </th>
+
+                                        <th class="font-weight-bold text-muted text-uppercase small"
+                                            style="padding:14px;border-bottom:2px solid #edf2f7;">
+                                            Nombre
+                                        </th>
+
+                                        <th class="font-weight-bold text-muted text-uppercase small"
+                                            style="padding:14px;border-bottom:2px solid #edf2f7;">
+                                            Teléfono
+                                        </th>
+
+                                        <th class="font-weight-bold text-muted text-uppercase small"
+                                            style="padding:14px;border-bottom:2px solid #edf2f7;">
+                                            Correo
+                                        </th>
+
+                                        <th class="font-weight-bold text-muted text-uppercase small"
+                                            style="padding:14px;border-bottom:2px solid #edf2f7;">
+                                            Dirección
+                                        </th>
+
+                                        <th class="font-weight-bold text-muted text-uppercase small"
+                                            style="width:12%;padding:14px;border-bottom:2px solid #edf2f7;">
+                                            Estado
+                                        </th>
+
+                                        <th class="font-weight-bold text-muted text-uppercase small text-right"
+                                            style="width:20%;padding:14px;border-bottom:2px solid #edf2f7;">
+                                            Acciones
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    {% for proveedor in proveedores %}
+
+                                    <tr>
+
+                                        <td style="padding:14px;">
+                                            <span class="badge badge-secondary text-dark font-weight-bold"
+                                                style="background:#f1f5f9;border-radius:6px;padding:6px 10px;">
+
+                                                #{{ proveedor.id }}
+
+                                            </span>
+                                        </td>
+
+                                        <td class="font-weight-medium text-dark" style="padding:14px;">
+                                            {{ proveedor.nombre }}
+                                        </td>
+
+                                        <td style="padding:14px;">
+                                            {{ proveedor.telefono }}
+                                        </td>
+
+                                        <td style="padding:14px;">
+                                            {{ proveedor.correo }}
+                                        </td>
+
+                                        <td style="padding:14px;">
+                                            {{ proveedor.direccion }}
+                                        </td>
+
+                                        <td style="padding:14px;">
+
+                                            {% if proveedor.estado == 'activo' %}
+
+                                                <span class="badge text-success"
+                                                    style="border-radius:6px;background:#e6f4ea;border:1px solid #c3e6cb;">
+
+                                                    <i class="mdi mdi-check-circle mr-1"></i>
+                                                    Activo
+
+                                                </span>
+
+                                            {% else %}
+
+                                                <span class="badge text-secondary"
+                                                    style="border-radius:6px;background:#f8f9fa;border:1px solid #dee2e6;">
+
+                                                    <i class="mdi mdi-close-circle mr-1"></i>
+                                                    Inactivo
+
+                                                </span>
+
+                                            {% endif %}
+
+                                        </td>
+
+                                        <td class="text-right" style="padding:14px;">
+
+                                            <div class="d-flex justify-content-end">
+
+                                                <a href="{% url 'editar_proveedor' proveedor.id %}"
+                                                    class="btn btn-sm btn-warning text-white mr-1"
+                                                    style="border-radius:6px;padding:6px 14px;">
+
+                                                    <i class="mdi mdi-pencil-outline mr-1"></i>
+                                                    Editar
+
+                                                </a>
+
+                                                <a href="{% url 'eliminar_proveedor' proveedor.id %}"
+                                                    class="btn btn-sm btn-outline-danger"
+                                                    onclick="return(confirm('¿Seguro que desea eliminar este proveedor?'))"
+                                                    style="border-radius:6px;padding:6px 14px;">
+
+                                                    <i class="mdi mdi-trash-can-outline mr-1"></i>
+                                                    Eliminar
+
+                                                </a>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                    {% empty %}
+
+                                    <tr>
+
+                                        <td colspan="7"
+                                            class="text-center text-muted py-5"
+                                            style="background:#fafbfe;">
+
+                                            <i class="mdi mdi-truck-delivery d-block mb-2"
+                                                style="font-size:2.5rem;"></i>
+
+                                            <span class="font-weight-medium">
+                                                No hay proveedores registrados.
+                                            </span>
+
+                                        </td>
+
+                                    </tr>
+
+                                    {% endfor %}
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+
+    var input = document.getElementById('filtroProveedores');
+    var tabla = document.getElementById('tablaProveedores');
+
+    if (!input || !tabla) return;
+
+    input.addEventListener('keyup', function () {
+
+        var filtro = input.value.toLowerCase().trim();
+        var filas = tabla.querySelectorAll('tbody tr');
+
+        filas.forEach(function (fila) {
+
+            if (fila.querySelector('td[colspan]')) return;
+
+            var texto = fila.textContent.toLowerCase();
+
+            fila.style.display = texto.indexOf(filtro) > -1 ? '' : 'none';
+
+        });
+
+    });
+
+})();
+</script>
+
+{% include 'private/footer.html' %}
