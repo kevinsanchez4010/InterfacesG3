@@ -10,30 +10,28 @@ def listar_proveedores(request):
     contexto = {
         'proveedores': proveedores
     }
-    return render(request, 'proveedores/listar_proveedores.html', contexto)
+    return render(request, 'proveedores/listar_proveedor.html', contexto)
 
 
 @login_required
 def crear_proveedor(request):
     if request.method == 'POST':
-        nombre = request.POST.get("nombre")
-        telefono = request.POST.get("telefono")
-        correo = request.POST.get("correo")
-        direccion = request.POST.get("direccion")
-        estado = request.POST.get("estado")
+        nombre_empresa = request.POST.get("nombre_empresa")
+        ruc_proveedor = request.POST.get("ruc_proveedor")
+        telefono_contacto = request.POST.get("telefono_contacto")
+        direccion_matriz = request.POST.get("direccion_matriz")
 
-        # Verificar si ya existe un proveedor con el mismo nombre
-        if Proveedor.objects.filter(nombre=nombre).exists():
-            messages.error(request, "El proveedor ya existe")
+        # Verificar si ya existe un proveedor con el mismo RUC
+        if Proveedor.objects.filter(ruc_proveedor=ruc_proveedor).exists():
+            messages.error(request, "El proveedor con este RUC ya existe")
             return render(request, "proveedores/crear_proveedor.html")
 
         # Crear proveedor
         Proveedor.objects.create(
-            nombre=nombre,
-            telefono=telefono,
-            correo=correo,
-            direccion=direccion,
-            estado=estado
+            nombre_empresa=nombre_empresa,
+            ruc_proveedor=ruc_proveedor,
+            telefono_contacto=telefono_contacto,
+            direccion_matriz=direccion_matriz
         )
 
         messages.success(request, "Proveedor creado con éxito")
@@ -55,15 +53,14 @@ def editar_proveedor(request, id):
     proveedor = Proveedor.objects.get(id=id)
 
     if request.method == "POST":
-        nombre = request.POST.get("nombre_edit")
-        telefono = request.POST.get("telefono_edit")
-        correo = request.POST.get("correo_edit")
-        direccion = request.POST.get("direccion_edit")
-        estado = request.POST.get("estado_edit")
+        nombre_empresa = request.POST.get("nombre_empresa")
+        ruc_proveedor = request.POST.get("ruc_proveedor")
+        telefono_contacto = request.POST.get("telefono_contacto")
+        direccion_matriz = request.POST.get("direccion_matriz")
 
-        # Verificar nombre repetido
-        if Proveedor.objects.filter(nombre=nombre).exclude(id=id).exists():
-            messages.error(request, "El nombre del proveedor ya está registrado")
+        # Verificar RUC repetido
+        if Proveedor.objects.filter(ruc_proveedor=ruc_proveedor).exclude(id=id).exists():
+            messages.error(request, "El RUC del proveedor ya está registrado")
             return render(
                 request,
                 "proveedores/editar_proveedor.html",
@@ -71,11 +68,10 @@ def editar_proveedor(request, id):
             )
 
         # Actualizar datos
-        proveedor.nombre = nombre
-        proveedor.telefono = telefono
-        proveedor.correo = correo
-        proveedor.direccion = direccion
-        proveedor.estado = estado
+        proveedor.nombre_empresa = nombre_empresa
+        proveedor.ruc_proveedor = ruc_proveedor
+        proveedor.telefono_contacto = telefono_contacto
+        proveedor.direccion_matriz = direccion_matriz
 
         proveedor.save()
         messages.success(request, "Proveedor actualizado con éxito")

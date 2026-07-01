@@ -1,20 +1,16 @@
 {% load static %}
 {% include 'private/header.html' %}
 
-<div class="Panel-principal">
-    <div class="Contenedor de contenido">
-        <div class="Fila con justificación centrada">
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row justify-content-center">
             <div class="col-md-8 grid-margin stretch-card">
                 <div class="card shadow-sm border-0" style="border-radius: 12px;">
                     <div class="card-body p-4">
-
+                        
                         <div class="mb-4">
-                            <h4 class="font-weight-bold mb-1" style="color: #2c3e50; font-size: 1.4rem;">
-                                Registrar nuevo  Proveedor
-                            </h4>
-                            <p class="text-muted small mb-0">
-                                Ingrese la información correspondientede un nuevo proveedor del minimarket.
-                            </p>
+                            <h4 class="font-weight-bold mb-1" style="color: #2c3e50; font-size: 1.4rem;">Editar Proveedor</h4>
+                            <p class="text-muted small mb-0">Modifique los datos del proveedor y guarde los cambios.</p>
                         </div>
 
                         {% if messages %}
@@ -27,112 +23,37 @@
 
                         <form action="" method="post">
                             {% csrf_token %}
-
+                            
                             <div class="form-group mb-3">
-                                <label class="font-weight-medium text-dark">
-                                    Nombre del Proveedor
-                                </label>
-                                <input
-                                    Tipo="texto"
-                                    Nombre="nombre"
-                                    clase="Control de formulario"
-                                    required
-                                    Marcador de posoción="Ej. Distribuidora El Ahorro"
-                                    style="border-radius: 8px; padding: 12px;">
-                            </div>
-
-                            <div clase="Fila">
-
-                                <div class="col-md-6 form-group mb-3">
-                                    <label class="font-weight-medium text-dark">
-                                        Teléfono
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="telefono"
-                                        class="form-control"
-                                        required
-                                        placeholder="Ej. 0991234567"
-                                        style="border-radius: 8px; padding: 12px;">
-                                </div>
-
-                                <div class="col-md-6 form-group mb-3">
-                                    <label class="font-weight-medium text-dark">
-                                        Correo Electrónico
-                                    </label>
-                                    <input
-                                        type="email"
-                                        name="correo"
-                                        class="form-control"
-                                        required
-                                        placeholder="Ej. proveedor@email.com"
-                                        style="border-radius: 8px; padding: 12px;">
-                                </div>
-
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label class="font-weight-medium text-dark">
-                                    Dirección
-                                </label>
-                                <input
-                                    type="text"
-                                    name="direccion"
-                                    class="form-control"
-                                    required
-                                    placeholder="Ej. Av. Amazonas y Bolívar"
-                                    style="border-radius: 8px; padding: 12px;">
+                                <label class="font-weight-medium text-dark">Nombre de la Empresa / Razón Social</label>
+                                <input type="text" name="nombre_empresa" class="form-control" required value="{{ proveedor.nombre_empresa }}" placeholder="Ej. Distribuidora El Ahorro S.A." style="border-radius: 8px; padding: 12px;">
                             </div>
 
                             <div class="row">
-
-                                <div class="col-md-6 form-group mb-4">
-                                    <label class="font-weight-medium text-dark">
-                                        Estado del Proveedor
-                                    </label>
-
-                                    <select
-                                        name="estado"
-                                        class="form-control"
-                                        required
-                                        style="border-radius: 8px; padding: 12px; height: auto;">
-
-                                        <option value="activo" selected>
-                                            Activo
-                                        </option>
-
-                                        <option value="inactivo">
-                                            Inactivo
-                                        </option>
-
-                                    </select>
-
+                                <div class="col-md-6 form-group mb-3">
+                                    <label class="font-weight-medium text-dark">RUC del Proveedor</label>
+                                    <input type="text" name="ruc_proveedor" class="form-control" required value="{{ proveedor.ruc_proveedor }}" placeholder="Ej. 1792345678001" style="border-radius: 8px; padding: 12px;">
                                 </div>
-
+                                
+                                <div class="col-md-6 form-group mb-3">
+                                    <label class="font-weight-medium text-dark">Teléfono de Contacto</label>
+                                    <input type="text" name="telefono_contacto" class="form-control" required value="{{ proveedor.telefono_contacto }}" placeholder="Ej. 0991234567" style="border-radius: 8px; padding: 12px;">
+                                </div>
                             </div>
 
+                            <div class="form-group mb-4">
+                                <label class="font-weight-medium text-dark">Dirección Matriz</label>
+                                <input type="text" name="direccion_matriz" class="form-control" required value="{{ proveedor.direccion_matriz }}" placeholder="Ej. Av. Amazonas N21-120 y Patria" style="border-radius: 8px; padding: 12px;">
+                            </div>
+                            
                             <div class="d-flex align-items-center pt-2">
-
-                                <button
-                                    Tipo="Entregar"
-                                    clase="btn btn-success px-4 mr-3"
-                                    Estilo="border-radius: 8px; font-weight: 500; padding: 10px 20px;">
-
-                                    <i class="mdi mdi-content-save mr-1"></i>
-                                    Registrar Proveedor
-
+                                <button type="submit" class="btn btn-success px-4 mr-3" style="border-radius: 8px; font-weight: 500; padding: 10px 20px;">
+                                    <i class="mdi mdi-content-save mr-1"> Guardar Cambios</i>
                                 </button>
-
-                                <a href="{% url 'listar_proveedores' %}"
-                                   class="btn btn-outline-secondary px-4"
-                                   style="border-radius: 8px; font-weight: 500; padding: 10px 20px;">
-
+                                <a href="{% url 'listar_proveedores' %}" class="btn btn-outline-secondary px-4" style="border-radius: 8px; font-weight: 500; padding: 10px 20px;">
                                     Cancelar
-
                                 </a>
-
                             </div>
-
                         </form>
 
                     </div>

@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    
     path('', include('inicio.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('admin/', admin.site.urls),
@@ -26,4 +25,6 @@ urlpatterns = [
     path('lotes/', include('lotes.urls')),
     path('ubicaciones/', include('ubicaciones.urls')),
     path('proveedores/', include('proveedores.urls')),
+    path('ordenes_entrada/', include('ordenes_entrada.urls')),
+    path('ordenes_salida/', include('ordenes_salida.urls')),
 ]

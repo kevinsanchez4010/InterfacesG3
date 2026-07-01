@@ -90,7 +90,12 @@
 
                                         <th class="font-weight-bold text-muted text-uppercase small"
                                             style="padding:14px;border-bottom:2px solid #edf2f7;">
-                                            Nombre
+                                            Nombre de la Empresa
+                                        </th>
+
+                                        <th class="font-weight-bold text-muted text-uppercase small"
+                                            style="padding:14px;border-bottom:2px solid #edf2f7;">
+                                            RUC
                                         </th>
 
                                         <th class="font-weight-bold text-muted text-uppercase small"
@@ -100,17 +105,7 @@
 
                                         <th class="font-weight-bold text-muted text-uppercase small"
                                             style="padding:14px;border-bottom:2px solid #edf2f7;">
-                                            Correo
-                                        </th>
-
-                                        <th class="font-weight-bold text-muted text-uppercase small"
-                                            style="padding:14px;border-bottom:2px solid #edf2f7;">
-                                            Dirección
-                                        </th>
-
-                                        <th class="font-weight-bold text-muted text-uppercase small"
-                                            style="width:12%;padding:14px;border-bottom:2px solid #edf2f7;">
-                                            Estado
+                                            Dirección Matriz
                                         </th>
 
                                         <th class="font-weight-bold text-muted text-uppercase small text-right"
@@ -138,45 +133,19 @@
                                         </td>
 
                                         <td class="font-weight-medium text-dark" style="padding:14px;">
-                                            {{ proveedor.nombre }}
+                                            {{ proveedor.nombre_empresa }}
                                         </td>
 
                                         <td style="padding:14px;">
-                                            {{ proveedor.telefono }}
+                                            {{ proveedor.ruc_proveedor }}
                                         </td>
 
                                         <td style="padding:14px;">
-                                            {{ proveedor.correo }}
+                                            {{ proveedor.telefono_contacto }}
                                         </td>
 
                                         <td style="padding:14px;">
-                                            {{ proveedor.direccion }}
-                                        </td>
-
-                                        <td style="padding:14px;">
-
-                                            {% if proveedor.estado == 'activo' %}
-
-                                                <span class="badge text-success"
-                                                    style="border-radius:6px;background:#e6f4ea;border:1px solid #c3e6cb;">
-
-                                                    <i class="mdi mdi-check-circle mr-1"></i>
-                                                    Activo
-
-                                                </span>
-
-                                            {% else %}
-
-                                                <span class="badge text-secondary"
-                                                    style="border-radius:6px;background:#f8f9fa;border:1px solid #dee2e6;">
-
-                                                    <i class="mdi mdi-close-circle mr-1"></i>
-                                                    Inactivo
-
-                                                </span>
-
-                                            {% endif %}
-
+                                            {{ proveedor.direccion_matriz }}
                                         </td>
 
                                         <td class="text-right" style="padding:14px;">
@@ -212,7 +181,7 @@
 
                                     <tr>
 
-                                        <td colspan="7"
+                                        <td colspan="6"
                                             class="text-center text-muted py-5"
                                             style="background:#fafbfe;">
 
